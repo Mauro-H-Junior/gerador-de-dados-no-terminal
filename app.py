@@ -3,58 +3,58 @@ import os
 import time
 
 
-sistema = False
-while sistema == False:
+sistema_executando = False
+while sistema_executando == False:
 
 #LISTAS QUE SERÃO ITERADAS
 
-    nome = ['Mauro', 'João', 'Lima', 'Duarte', 'Lucas', 'Lindalva', 'Rita']
-    email = ['email@gmail.com', 'email@outlook.com']
-    telefone = ['(34) 999999999', '(35)888888888', '(31)777777777' ]
-    cidade = ['Uberaba', 'Santa Vitória']
-    estado = ['MG', 'SP', 'GO']
+    nomes = ['Mauro', 'João', 'Lima', 'Duarte', 'Lucas', 'Lindalva', 'Rita']
+    emails = ['email@gmail.com', 'email@outlook.com']
+    telefones = ['(34) 999999999', '(35)888888888', '(31)777777777' ]
+    cidades = ['Uberaba', 'Santa Vitória']
+    estados = ['MG', 'SP', 'GO']
 
         
-    lista_de_dados = []
-    lista_de_escolha = []
-    lista_de_teclas_para_escolha_sorteio = ['1', '2', '3', '4', '5']
-    lista_opcoes_de_texto = ['sim', 'y', 'Y', 's']
+    dados = []
+    escolha = []
+    teclas_para_escolha_sorteio = ['1', '2', '3', '4', '5']
+    opcoes_de_texto = ['sim', 'y', 'Y', 's']
     # lista_opcoes_de_tela = ['tela', 'TELA', 'Tela']
 
 #FUNÇÕES do APP
 
     def adiciona_nome_na_lista():
-        nome_aleatorio = random.choice(nome)
-        lista_de_dados.append(nome_aleatorio)
+        nome_aleatorio = random.choice(nomes)
+        dados.append(nome_aleatorio)
 
     def adiciona_email_na_lista():
-        email_aleatorio = random.choice(email)
-        lista_de_dados.append(email_aleatorio)
+        email_aleatorio = random.choice(emails)
+        dados.append(email_aleatorio)
 
     def adiciona_telefone_na_lista():
-        telefone_aleatorio = random.choice(telefone)
-        lista_de_dados.append(telefone_aleatorio)
+        telefone_aleatorio = random.choice(telefones)
+        dados.append(telefone_aleatorio)
 
     def adiciona_cidade_na_lista():
-        cidade_aleatorio = random.choice(cidade)
-        lista_de_dados.append(cidade_aleatorio)
+        cidade_aleatorio = random.choice(cidades)
+        dados.append(cidade_aleatorio)
 
     def adiciona_estado_na_lista():
-        estado_aleatorio = random.choice(estado)
-        lista_de_dados.append(estado_aleatorio)
+        estado_aleatorio = random.choice(estados)
+        dados.append(estado_aleatorio)
 
     def salvar_dados_no_txt():
         print('Exportando...')
         time.sleep(2)
         with open('DADOS.txt', 'a',  encoding='utf8', newline='') as arquivo:
-            for item in lista_de_dados:
+            for item in dados:
                 arquivo.write(item + os.linesep)
         print('Exportação OK!')
         time.sleep(2)
     
     def imprimir_dados_na_tela():
         
-        for i in lista_de_dados:
+        for i in dados:
             print(f'{i}')
     
 
@@ -105,7 +105,7 @@ while sistema == False:
 
             sair = False
 
-        if item not in lista_de_teclas_para_escolha_sorteio:
+        if item not in teclas_para_escolha_sorteio:
             print('MENSAGEM: DIGITE SOMENTE OS NÚMEROS SOLICITADOS!')
             print('-'*70)
             opcao_correta_para_sorteio = False
@@ -121,7 +121,7 @@ while sistema == False:
             print('-'*70)
             tela_ou_txt = input('Deseja exportar os dados no arquivo TXT? (Digite "y" ou "n")\n>')
             
-            if tela_ou_txt in lista_opcoes_de_texto:
+            if tela_ou_txt in opcoes_de_texto:
                 salvar_dados_no_txt()
                 opcao_correta_impressao = True
 
